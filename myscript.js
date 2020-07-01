@@ -14,7 +14,7 @@ var leftPressed = false;
 document.addEventListener('keydown', keyDownHandler, false);
 document.addEventListener('keyup', keyUpHandler, false);
 
-function keyDownHandler() {
+function keyDownHandler(e) {
     if(e.keyCode == 39){
         rightPressed = true;
     } else if (e.keyCode == 37){
@@ -22,7 +22,7 @@ function keyDownHandler() {
     }
 }
 
-function keyUpHandler() {
+function keyUpHandler(e) {
     if(e.keyCode == 39){
         rightPressed = false;
     } else if (e.keyCode == 37){
@@ -61,6 +61,12 @@ function draw() {
         dy = -dy;
     }
     // if statements added for collision detection
+    if(rightPressed && paddleX < canvas.width-paddleWidth) {
+        paddleX +=7;
+    }
+    else if(leftPressed && paddleX > 0) {
+        paddleX -=7;
+    }
     x +=dx;
     y +=dy;
 }
