@@ -5,6 +5,9 @@ var x = canvas.width/2;
 var y = canvas.height -30;
 var dx = 2;
 var dy = -2;
+var paddleHeight = 12;
+var paddleWidth = 72;
+var paddleX = (canvas.width - paddleWidth) / 2;
 
 function drawBall() {
     ctx.beginPath();
@@ -17,10 +20,20 @@ function drawBall() {
     ctx.closePath();
 }
 
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "black";
+    ctx.fill();
+    ctx.closePath();
+}
+
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //rect method takes in four parameters
     drawBall() ;
+    drawPaddle() ;
+
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
