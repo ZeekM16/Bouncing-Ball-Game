@@ -8,7 +8,27 @@ var dy = -2;
 var paddleHeight = 12;
 var paddleWidth = 72;
 var paddleX = (canvas.width - paddleWidth) / 2;
+var rightPressed = false;
+var leftPressed = false;
 
+document.addEventListener('keydown', keyDownHandler, false);
+document.addEventListener('keyup', keyUpHandler, false);
+
+function keyDownHandler() {
+    if(e.keyCode == 39){
+        rightPressed = true;
+    } else if (e.keyCode == 37){
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler() {
+    if(e.keyCode == 39){
+        rightPressed = false;
+    } else if (e.keyCode == 37){
+        leftPressed = false;
+    }
+}
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, 10, ballRadius, 0, Math.PI*2, false);
